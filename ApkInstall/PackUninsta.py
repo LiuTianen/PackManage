@@ -3,7 +3,7 @@ import subprocess
 import threading
 import re
 import time
-from packName import APP
+from PackName import APP
 
 class UnInstall:
 
