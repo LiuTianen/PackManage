@@ -1,8 +1,7 @@
 import os
 import subprocess
-import threading
 import re
-import time
+
 
 
 class OnelineDevices:
@@ -17,7 +16,7 @@ class OnelineDevices:
         p =os.popen('adb devices')
         outstr = p.read()
         print(outstr)
-        connectDeviceid = re.findall(r'(\w+)\s+devices\s', outstr)
+        connectDeviceid = re.findall(r'(\w+)\s+device\s', outstr)
         return connectDeviceid
 
 if __name__ == '__main__':
