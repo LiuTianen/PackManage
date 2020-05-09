@@ -4,8 +4,6 @@
 使用Python获取待测APP的相关参数信息
 """
 
-
-from math import floor
 import os
 import subprocess
 
@@ -20,9 +18,6 @@ class APP:
 
     # 获取APP的文件大小
     def get_apk_size(self):
-
-        # size = floor(os.path.getsize(self.apkPath) / (1024 * 1000)) #向下取整
-        # return str(size) + "M"
         size = os.path.getsize(self.apkPath) / (1024 * 1000)
         return('%.2f' % size)+ "M"  #保留小数点后两位
 

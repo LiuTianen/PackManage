@@ -1,28 +1,13 @@
-import os
-import subprocess
 import threading
-import re
 import time
+from OnlineDevices import OnelineDevices as od
 
 
 class PackInstall:
 
-    def excute(self, cmd):
-        subprocess.Popen(cmd, shell=True)
-
-
-    # 获取在线的设备
-    def get_conn_dev(self):
-        connectDeviceid = []
-        p =os.popen('adb devices')
-        outstr = p.read()
-        print(outstr)
-        connectDeviceid = re.findall(r'(\w+)\s+devices\s', outstr)
-        return connectDeviceid
-
     # 推送APK，并安装
     def installApk(self, apk_path):
-        connectDevices = self.get_conn_dev()
+        connectDevices = od().get_conn_dev()
         commands =[]
 
         for device in connectDevices:
@@ -33,7 +18,7 @@ class PackInstall:
         threads_count = len(commands)
 
         for i in range(threads_count):
-            t = threading.Thread(target= self.excute, args=(commands[i],))
+            t = threading.Thread(target=od().excute, args=(commands[i],))
             threads.append(t)
 
         for i in range(threads_count):
@@ -45,5 +30,6 @@ class PackInstall:
 
 
 if __name__ == '__main__':
-    apk_path = "null"
+    apk_path = "C:\\Users\\YongYI\\Downloads\\com.estrongs.android.pop_10067.apk"
+    PackInstall().installApk(apk_path)
 
