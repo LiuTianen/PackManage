@@ -1,18 +1,20 @@
-from Base.DevicesList import devicesList as dl
-import time
 import threading
+import time
+from PackName import APP
 from Base.OnlineDevices import OnelineDevices as od
+from Base.DevicesList import devicesList as dl
 
-class WifiInstall:
+class UnInstall:
 
-    def wifiInstall(self, apk_path):
+
+    def Uninstall(self):
+        packName = APP().get_apk_package()
+
         connectDevices = dl().get_DevicesIP()
         commands = []
-
         for device in connectDevices:
-            cmd = "adb -s %s install -r %s" %(device, apk_path)
+            cmd = "adb -s %s uninstall %s" % (device,packName)
             commands.append(cmd)
-
         threads = []
         threads_count = len(commands)
 
@@ -21,12 +23,11 @@ class WifiInstall:
             threads.append(t)
 
         for i in range(threads_count):
-            time.sleep(1)
+            time.sleep(1)  # 防止adb连接出错
             threads[i].start()
 
         for i in range(threads_count):
             threads[i].join()
 
 if __name__ == '__main__':
-    apk_path = "C:\\Users\\YongYI\\Downloads\\com.estrongs.android.pop_10067.apk"
-    WifiInstall().wifiInstall(apk_path)
+    UnInstall().Uninstall()
