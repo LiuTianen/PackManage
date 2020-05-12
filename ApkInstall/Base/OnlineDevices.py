@@ -6,8 +6,6 @@ import re
 
 class OnelineDevices:
 
-    def excute(self, cmd):
-        subprocess.Popen(cmd, shell=True)
 
 
     # 获取在线的设备
