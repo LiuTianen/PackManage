@@ -9,3 +9,8 @@
 然后等待一段时间后，重启APP
 然后卸载，重装，再运行
 """
+
+
+class startInit:
+
+    pass
