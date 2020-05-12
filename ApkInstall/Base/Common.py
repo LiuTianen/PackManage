@@ -12,7 +12,7 @@ class Common:
         threads_count = len(commands)
 
         for i in range(threads_count):
-            t = threading.Thread(target=Common().excute, args=(commands[i],))
+            t = threading.Thread(target=self.excute, args=(commands[i],))
             threads.append(t)
 
         for i in range(threads_count):
