@@ -1,7 +1,8 @@
 import threading
 import time
-from PackName import APP
+from Base.PackName import APP
 from Base.OnlineDevices import OnelineDevices as od
+from Base.DevicesList import devicesList as dl
 
 class PackLaunch:
 
@@ -9,7 +10,7 @@ class PackLaunch:
         launchable_activity = APP().get_apk_activity()
         packName = APP().get_apk_package()
         pack_lauch = packName +"/"+ launchable_activity
-        connectDevices = od().get_conn_dev()
+        connectDevices = dl().get_DevicesIP()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s shell am start -n %s" % (device, pack_lauch)

@@ -10,4 +10,4 @@ WifiDevices:
         IP: 192.168.8.137
     device_4:
         name: Togic
-        IP: 192.168.8.153
+        IP: 192.168.8.90

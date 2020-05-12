@@ -1,8 +1,7 @@
 import threading
 import time
-from PackName import APP
+from Base.PackName import APP
 from Base.OnlineDevices import OnelineDevices as od
-from Base.DevicesList import devicesList as dl
 
 class UnInstall:
 
@@ -10,7 +9,7 @@ class UnInstall:
     def Uninstall(self):
         packName = APP().get_apk_package()
 
-        connectDevices = dl().get_DevicesIP()
+        connectDevices = od().get_conn_dev()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s uninstall %s" % (device,packName)
