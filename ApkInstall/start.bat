@@ -1,2 +1,2 @@
-python Case\initPack.py
+python StartCase.py
 pause
