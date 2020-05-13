@@ -1,6 +1,7 @@
 import subprocess
 import time
 import threading
+import os
 
 class Common:
 
@@ -22,6 +23,20 @@ class Common:
         for i in range(threads_count):
             threads[i].join()
 
+    def apkPath(self):
+        pass
+
+    def adbDisconnect(self):
+        Disc = os.popen('adb disconnect')
+        return Disc
+
+    def adbRestart(self):
+        restart = os.popen('adb kill-server &&adb devices')
+        return restart
+
 if __name__ == '__main__':
     Common().excute()
     Common().loop_threads()
+    Common().apkPath()
+    Common().adbDisconnect()
+    Common().adbRestart()

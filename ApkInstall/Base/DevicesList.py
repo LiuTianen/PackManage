@@ -5,14 +5,16 @@ class devicesList:
 
 
     def openTvConfigFile(self):
-        file = open('..\\..\\Data\\TvDevices.yaml', 'r', encoding="utf-8")
+        # file = open('..\\..\\Data\\TvDevices.yaml', 'r', encoding="utf-8")
+        file = open('Data\\TvDevices.yaml', 'r', encoding="utf-8")
         file_data = file.read()
         file.close()
         data = yaml.load(file_data, Loader=yaml.FullLoader)
         return data
 
     def openMobileConfigFile(self):
-        file = open('..\\..\\Data\\MobileDevices.yaml', 'r', encoding="utf-8")
+        # file = open('..\\..\\Data\\MobileDevices.yaml', 'r', encoding="utf-8")
+        file = open('Data\\MobileDevices.yaml', 'r', encoding="utf-8")
         file_data = file.read()
         file.close()
         data = yaml.load(file_data, Loader=yaml.FullLoader)

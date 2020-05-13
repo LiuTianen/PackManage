@@ -13,7 +13,7 @@ class APP:
     apkPath = "C:\\Users\\YongYI\\Downloads\\com.estrongs.android.pop_10067.apk"
 
     def __init__(self):
-        self.aapt = "D:\\SDK\\build-tools\\28.0.3\\aapt dump badging "
+        self.aapt = "Base\\aapt dump badging "
 
 
     # 获取APP的文件大小
