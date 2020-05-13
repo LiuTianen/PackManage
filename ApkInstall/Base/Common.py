@@ -45,6 +45,11 @@ class Common:
         Top = os.system(adbs)
         return Top
 
+    def cmdKill(self):
+        adbs = 'start cmd /k "tskill adb && tskill cmd"'
+        kill = os.system(adbs)
+        return kill
+
 if __name__ == '__main__':
     adbDevices = []
     Common().excute()
@@ -53,3 +58,4 @@ if __name__ == '__main__':
     Common().adbDisconnect()
     Common().adbRestart()
     Common().adbTop(adbDevices)
+    Common().cmdKill()
