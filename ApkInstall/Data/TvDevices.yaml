@@ -1,13 +1,13 @@
 WifiDevices:
     device_1:
         name: Xiaomi
-        IP: 192.168.8.87
+        IP: 192.168.8.87:5555
     device_2:
         name: Jiuzhou
-        IP: 192.168.8.153
+        IP: 192.168.8.153:5555
     device_3:
         name: MangGuo
-        IP: 192.168.8.137
+        IP: 192.168.8.137:5555
     device_4:
         name: Togic
-        IP: 192.168.8.90
+        IP: 192.168.8.90:5555

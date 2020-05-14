@@ -8,7 +8,7 @@ class TvCase:
 
     def tvConnect(self):
         commands = []
-        data = dl().get_Tv_IP()
+        data = dl().get_tvDevices()
         for IP in data:
             cmd = "adb connect %s" % (IP)
             commands.append(cmd)
@@ -18,7 +18,7 @@ class TvCase:
     def tvUninstall(self):
         packName = APP().get_apk_package()
 
-        connectDevices = dl().get_Tv_IP()
+        connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s uninstall %s" % (device, packName)
@@ -26,7 +26,7 @@ class TvCase:
         Common().loop_threads(commands)
 
     def tvInstall(self,apk_path):
-        connectDevices = dl().get_Tv_IP()
+        connectDevices = dl().get_tvDevices()
         commands = []
 
         for device in connectDevices:
@@ -38,7 +38,7 @@ class TvCase:
         launchable_activity = APP().get_apk_activity()
         packName = APP().get_apk_package()
         pack_lauch = packName + "/" + launchable_activity
-        connectDevices = dl().get_Tv_IP()
+        connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s shell am start -n %s" % (device, pack_lauch)

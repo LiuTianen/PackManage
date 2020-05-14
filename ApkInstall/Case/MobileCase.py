@@ -1,14 +1,13 @@
 # coding=utf-8
 from Base.PackName import APP
 from Base.Common import Common
-from Base.OnlineDevices import OnelineDevices as od
 from Base.DevicesList import devicesList as dl
 
 class MobileCase:
 
     def MobileUninstall(self):
         packName = APP().get_apk_package()
-        connectDevices = od().get_conn_dev()
+        connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s uninstall %s" % (device, packName)
@@ -16,7 +15,7 @@ class MobileCase:
         Common().loop_threads(commands)
 
     def MobileInstall(self, apk_path):
-        connectDevices = dl().get_MobileName()
+        connectDevices = dl().get_mobileDevices()
         commands =[]
 
         for device in connectDevices:
@@ -28,7 +27,7 @@ class MobileCase:
         launchable_activity = APP().get_apk_activity()
         packName = APP().get_apk_package()
         pack_lauch = packName +"/"+ launchable_activity
-        connectDevices = dl().get_MobileName()
+        connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s shell am start -n %s" % (device, pack_lauch)
@@ -36,7 +35,7 @@ class MobileCase:
         Common().loop_threads(commands)
 
     def mobileApp_Kill(self):
-        connectDevices = dl().get_MobileName()
+        connectDevices = dl().get_mobileDevices()
         packName = APP().get_apk_package()
         commands = []
         for device in connectDevices:
