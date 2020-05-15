@@ -58,4 +58,5 @@ if __name__ == '__main__':
     Common().adbDisconnect()
     Common().adbRestart()
     Common().adbTop(adbDevices)
+    Common().adbLogcat(adbDevices)
     Common().cmdKill()
