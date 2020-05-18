@@ -3,14 +3,18 @@ from Base.PackName import APP
 from Base.Common import Common
 from Base.DevicesList import devicesList as dl
 
+
 class MobileCase:
+    def __init__(self):
+        self.packName = APP().get_apk_package()
+
 
     def MobileUninstall(self):
-        packName = APP().get_apk_package()
+
         connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
-            cmd = "adb -s %s uninstall %s" % (device, packName)
+            cmd = "adb -s %s uninstall %s" % (device, self.packName)
             commands.append(cmd)
         Common().loop_threads(commands)
 
@@ -36,10 +40,10 @@ class MobileCase:
 
     def mobileApp_Kill(self):
         connectDevices = dl().get_mobileDevices()
-        packName = APP().get_apk_package()
+        # packName = APP().get_apk_package()
         commands = []
         for device in connectDevices:
-            cmd = "adb -s %s shell am force-stop %s" % (device, packName)
+            cmd = "adb -s %s shell am force-stop %s" % (device, self.packName)
             commands.append(cmd)
         Common().loop_threads(commands)
 
@@ -59,10 +63,19 @@ class MobileCase:
             commands.append(adbLogcat)
         return commands
 
+    def MobileAppClear(self):
+        connectDevices = dl().get_mobileDevices()
+        commands = []
+        for device in connectDevices:
+            adbClear = Common().adbClear(device, self.packName)
+            commands.append(adbClear)
+        Common().loop_threads(commands)
+
 if __name__ == '__main__':
     apk_path = []
-    MobileCase().MobileUninstall()
-    MobileCase().MobileInstall(apk_path)
-    MobileCase().MobileAppRun()
-    MobileCase().mobileApp_Kill()
-    MobileCase().mobileAppTop()
+    # MobileCase().MobileUninstall()
+    # MobileCase().MobileInstall(apk_path)
+    # MobileCase().MobileAppRun()
+    # MobileCase().mobileApp_Kill()
+    # MobileCase().mobileAppTop()
+    MobileCase().MobileAppClear()

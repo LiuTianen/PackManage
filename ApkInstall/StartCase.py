@@ -35,6 +35,9 @@ class startInit:
                     elif i == '6':
                         MobileCase().mobileAppLogcat()
                         break
+                    elif i == '7':
+                        MobileCase().MobileAppClear()
+                        break
                     else:
                         startInit().Case_Select()
             elif i == '2':

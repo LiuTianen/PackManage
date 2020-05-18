@@ -8,12 +8,13 @@ import os
 import subprocess
 from Base.Common import Common
 
+
 class APP:
     # 待测试应用路径
     # apkPath = "C:\\Users\\YongYI\\Downloads\\com.estrongs.android.pop_10067.apk"
 
-    def __init__(self):
-        self.aapt = "aapt dump badging "
+    # def __init__(self):
+        # self.aapt = "aapt dump badging "
         # self.aapt = "D:\\SDK\\build-tools\\28.0.3\\aapt dump badging "
 
     # 获取APP的文件大小
@@ -23,7 +24,7 @@ class APP:
 
     # 获取APP的版本信息
     def get_apk_version(self):
-        cmd = Common().aapt + Common().apkPath()
+        cmd = Common().aaPath()
         result = ""
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -36,7 +37,7 @@ class APP:
 
     # 获取APP的名字
     def get_apk_name(self):
-        cmd = Common().aapt + Common().apkPath() + " | findstr application-label-zu: "
+        cmd = Common().aaPath() + " | findstr application-label-zu: "
         result = ""
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -49,7 +50,7 @@ class APP:
 
     # 获取APP的包名
     def get_apk_package(self):
-        cmd = self.aapt + Common().apkPath() + " | findstr package:"
+        cmd = Common().aaPath()+ " | findstr package:"
         result = ""
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -62,7 +63,7 @@ class APP:
 
     # 得到启动类
     def get_apk_activity(self):
-        cmd = self.aapt + Common().apkPath() + " | findstr launchable-activity:"
+        cmd = Common().aaPath() + " | findstr launchable-activity:"
         result = ""
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
