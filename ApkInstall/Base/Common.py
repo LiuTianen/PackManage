@@ -2,16 +2,32 @@ import subprocess
 import time
 import threading
 import os
+import configparser
 
 class Common:
 
-    def apkPath(self):
-        # 调试路径
-        # apkPath = "..\\Apk\\com.estrongs.android.pop_10067.apk"
+    cf = configparser.ConfigParser()
+    cf.read('Config.ini', encoding="utf-8")
 
-        # 运行路径
-        apkPath = "Apk\\com.estrongs.android.pop_10067.apk"
+    def apkPath(self):
+        apkPath = self.cf.get("Common", "apkPath")
         return apkPath
+
+    def aapt(self):
+        appt = self.cf.get("Common", "appt")
+        return appt
+
+    def aaPath(self):
+        aaPath = Common().aapt() + ' ' + Common().apkPath()
+        return aaPath
+
+    # def apkPath(self):
+    #     # 调试路径
+    #     # apkPath = "..\\Apk\\com.estrongs.android.pop_10067.apk"
+    #
+    #     # 运行路径
+    #     apkPath = "Apk\\com.estrongs.android.pop_10067.apk"
+    #     return apkPath
 
     def excute(self, cmd):
         subprocess.Popen(cmd, shell=True)
@@ -57,7 +73,7 @@ class Common:
 
 if __name__ == '__main__':
     adbDevices = []
-    print(Common().apkPath())
+    # print(Common().apkPath())
     # Common().excute()
     # Common().loop_threads()
     # Common().apkPath()

@@ -23,7 +23,7 @@ class APP:
 
     # 获取APP的版本信息
     def get_apk_version(self):
-        cmd = self.aapt + Common().apkPath()
+        cmd = Common().aapt + Common().apkPath()
         result = ""
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -36,7 +36,7 @@ class APP:
 
     # 获取APP的名字
     def get_apk_name(self):
-        cmd = self.aapt + Common().apkPath() + " | findstr application-label-zu: "
+        cmd = Common().aapt + Common().apkPath() + " | findstr application-label-zu: "
         result = ""
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
