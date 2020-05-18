@@ -62,6 +62,11 @@ class Common:
         Top = os.system(adbs)
         return  Top
 
+
+    def adbClear(self, adbDevices, packageName):
+        adbClear = 'adb -s %s shell pm clear %s' %(adbDevices, packageName)
+        return adbClear
+
     def adbLogcat(self,adbDevices):
         logTag = 'vc:V vs:V Vm:V ReportWeb:V vac:V reqm:V Em:V VPReportManager:V VpAdControl:V *:S'
         adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, logTag)
