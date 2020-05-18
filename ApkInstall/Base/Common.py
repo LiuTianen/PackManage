@@ -5,6 +5,14 @@ import os
 
 class Common:
 
+    def apkPath(self):
+        # 调试路径
+        # apkPath = "..\\Apk\\com.estrongs.android.pop_10067.apk"
+
+        # 运行路径
+        apkPath = "Apk\\com.estrongs.android.pop_10067.apk"
+        return apkPath
+
     def excute(self, cmd):
         subprocess.Popen(cmd, shell=True)
 
@@ -22,9 +30,6 @@ class Common:
 
         for i in range(threads_count):
             threads[i].join()
-
-    def apkPath(self):
-        pass
 
     def adbDisconnect(self):
         Disc = os.popen('adb disconnect')
@@ -52,11 +57,12 @@ class Common:
 
 if __name__ == '__main__':
     adbDevices = []
-    Common().excute()
-    Common().loop_threads()
-    Common().apkPath()
-    Common().adbDisconnect()
-    Common().adbRestart()
-    Common().adbTop(adbDevices)
-    Common().adbLogcat(adbDevices)
-    Common().cmdKill()
+    print(Common().apkPath())
+    # Common().excute()
+    # Common().loop_threads()
+    # Common().apkPath()
+    # Common().adbDisconnect()
+    # Common().adbRestart()
+    # Common().adbTop(adbDevices)
+    # Common().adbLogcat(adbDevices)
+    # Common().cmdKill()

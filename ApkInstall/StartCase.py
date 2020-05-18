@@ -78,5 +78,5 @@ class startInit:
 
 
 if __name__ == '__main__':
-    apk_path = "C:\\Users\\YongYI\\Downloads\\com.estrongs.android.pop_10067.apk"
+    apk_path = Common().apkPath()
     startInit().Case_Select()
