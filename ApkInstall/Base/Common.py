@@ -13,7 +13,7 @@ class Common:
     def apkPath(self):
         apkPath = self.cf.get("Common", "apkPath")
         return apkPath
-    
+
     # aapt路径的读取方法
     def aapt(self):
         appt = self.cf.get("Common", "aapt")
