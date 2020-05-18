@@ -5,16 +5,18 @@ import os
 import configparser
 
 class Common:
-
+    # 配置文件读取的方法
     cf = configparser.ConfigParser()
     cf.read('Config.ini', encoding="utf-8")
 
+    # apk路径读取的方法
     def apkPath(self):
         apkPath = self.cf.get("Common", "apkPath")
         return apkPath
-
+    
+    # aapt路径的读取方法
     def aapt(self):
-        appt = self.cf.get("Common", "appt")
+        appt = self.cf.get("Common", "aapt")
         return appt
 
     def aaPath(self):
