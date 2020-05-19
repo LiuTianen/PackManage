@@ -29,8 +29,7 @@ class MobileCase:
 
     def MobileAppRun(self):
         launchable_activity = APP().get_apk_activity()
-        packName = APP().get_apk_package()
-        pack_lauch = packName +"/"+ launchable_activity
+        pack_lauch = self.packName +"/"+ launchable_activity
         connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
@@ -40,7 +39,6 @@ class MobileCase:
 
     def mobileApp_Kill(self):
         connectDevices = dl().get_mobileDevices()
-        # packName = APP().get_apk_package()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s shell am force-stop %s" % (device, self.packName)

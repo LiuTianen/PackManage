@@ -6,6 +6,9 @@ from Base.PackName import APP
 
 class TvCase:
 
+    def __init__(self):
+        self.packName = APP().get_apk_package()
+
     def tvConnect(self):
         commands = []
         data = dl().get_tvDevices()
@@ -16,11 +19,10 @@ class TvCase:
 
 
     def tvUninstall(self):
-        packName = APP().get_apk_package()
         connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
-            cmd = "adb -s %s uninstall %s" % (device, packName)
+            cmd = "adb -s %s uninstall %s" % (device, self.packName)
             commands.append(cmd)
         Common().loop_threads(commands)
 
@@ -34,8 +36,8 @@ class TvCase:
 
     def tvAppRun(self):
         launchable_activity = APP().get_apk_activity()
-        packName = APP().get_apk_package()
-        pack_lauch = packName + "/" + launchable_activity
+        # packName = APP().get_apk_package()
+        pack_lauch = self.packName + "/" + launchable_activity
         connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
@@ -45,10 +47,10 @@ class TvCase:
 
     def tvAppKill(self):
         connectDevices = dl().get_tvDevices()
-        packName = APP().get_apk_package()
+        # packName = APP().get_apk_package()
         commands = []
         for device in connectDevices:
-            cmd = "adb -s %s shell am force-stop %s" % (device, packName)
+            cmd = "adb -s %s shell am force-stop %s" % (device, self.packName)
             commands.append(cmd)
         Common().loop_threads(commands)
 
@@ -67,6 +69,14 @@ class TvCase:
             adbLogcat = Common().adbLogcat(device)
             commands.append(adbLogcat)
         return commands
+
+    def tvAppClear(self):
+        connectDevices = dl().get_tvDevices()
+        commands = []
+        for device in connectDevices:
+            adbClear = Common().adbClear(device, self.packName)
+            commands.append(adbClear)
+        Common().loop_threads(commands)
 
 
 if __name__ == '__main__':
