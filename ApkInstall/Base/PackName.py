@@ -10,12 +10,6 @@ from Base.Common import Common
 
 
 class APP:
-    # 待测试应用路径
-    # apkPath = "C:\\Users\\YongYI\\Downloads\\com.estrongs.android.pop_10067.apk"
-
-    # def __init__(self):
-        # self.aapt = "aapt dump badging "
-        # self.aapt = "D:\\SDK\\build-tools\\28.0.3\\aapt dump badging "
 
     # 获取APP的文件大小
     def get_apk_size(self):

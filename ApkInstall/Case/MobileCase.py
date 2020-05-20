@@ -71,9 +71,3 @@ class MobileCase:
 
 if __name__ == '__main__':
     apk_path = []
-    # MobileCase().MobileUninstall()
-    # MobileCase().MobileInstall(apk_path)
-    # MobileCase().MobileAppRun()
-    # MobileCase().mobileApp_Kill()
-    # MobileCase().mobileAppTop()
-    MobileCase().MobileAppClear()

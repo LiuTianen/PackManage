@@ -27,14 +27,6 @@ class Common:
         logTag = self.cf.get("Common", "logTag")
         return logTag
 
-    # def apkPath(self):
-    #     # 调试路径
-    #     # apkPath = "..\\Apk\\com.estrongs.android.pop_10067.apk"
-    #
-    #     # 运行路径
-    #     apkPath = "Apk\\com.estrongs.android.pop_10067.apk"
-    #     return apkPath
-
     def excute(self, cmd):
         subprocess.Popen(cmd, shell=True)
 
@@ -72,7 +64,6 @@ class Common:
         return adbClear
 
     def adbLogcat(self,adbDevices):
-        # logTag = 'vc:V vs:V Vm:V ReportWeb:V vac:V reqm:V Em:V VPReportManager:V VpAdControl:V *:S'
         adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, Common().logTag())
         adbLogcat = os.system(adbs)
         return adbLogcat
@@ -84,14 +75,4 @@ class Common:
 
 if __name__ == '__main__':
     adbDevices = []
-    # Common().logTag()
-    # print(Common().logTag())
-    # print(Common().apkPath())
-    # Common().excute()
-    # Common().loop_threads()
-    # Common().apkPath()
-    # Common().adbDisconnect()
-    # Common().adbRestart()
-    # Common().adbTop(adbDevices)
-    # Common().adbLogcat(adbDevices)
-    # Common().cmdKill()
+

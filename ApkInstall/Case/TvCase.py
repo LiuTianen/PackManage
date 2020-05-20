@@ -81,8 +81,3 @@ class TvCase:
 
 if __name__ == '__main__':
     apk_path = []
-    TvCase().tvConnect()
-    TvCase().tvUninstall()
-    TvCase().tvInstall(apk_path)
-    TvCase().tvAppRun()
-    TvCase().tvAppKill()
