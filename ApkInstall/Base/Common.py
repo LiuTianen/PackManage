@@ -23,6 +23,10 @@ class Common:
         aaPath = Common().aapt() + ' ' + Common().apkPath()
         return aaPath
 
+    def logTag(self):
+        logTag = self.cf.get("Common", "logTag")
+        return logTag
+
     # def apkPath(self):
     #     # 调试路径
     #     # apkPath = "..\\Apk\\com.estrongs.android.pop_10067.apk"
@@ -60,7 +64,7 @@ class Common:
     def adbTop(self,adbDevices):
         adbs = 'start cmd /k "adb -s %s shell top -m 10"' %(adbDevices)
         Top = os.system(adbs)
-        return  Top
+        return Top
 
 
     def adbClear(self, adbDevices, packageName):
@@ -68,10 +72,10 @@ class Common:
         return adbClear
 
     def adbLogcat(self,adbDevices):
-        logTag = 'vc:V vs:V Vm:V ReportWeb:V vac:V reqm:V Em:V VPReportManager:V VpAdControl:V *:S'
-        adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, logTag)
-        Top = os.system(adbs)
-        return Top
+        # logTag = 'vc:V vs:V Vm:V ReportWeb:V vac:V reqm:V Em:V VPReportManager:V VpAdControl:V *:S'
+        adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, Common().logTag())
+        adbLogcat = os.system(adbs)
+        return adbLogcat
 
     def cmdKill(self):
         adbs = 'start cmd /k "tskill adb && tskill cmd"'
@@ -80,6 +84,8 @@ class Common:
 
 if __name__ == '__main__':
     adbDevices = []
+    # Common().logTag()
+    # print(Common().logTag())
     # print(Common().apkPath())
     # Common().excute()
     # Common().loop_threads()
