@@ -23,10 +23,6 @@ class Common:
         aaPath = Common().aapt() + ' ' + Common().apkPath()
         return aaPath
 
-    def logTag(self):
-        logTag = self.cf.get("Common", "logTag")
-        return logTag
-
     def excute(self, cmd):
         subprocess.Popen(cmd, shell=True)
 
@@ -64,7 +60,8 @@ class Common:
         return adbClear
 
     def adbLogcat(self,adbDevices):
-        adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, Common().logTag())
+        logTag = self.cf.get("Common", "logTag")
+        adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, logTag)
         adbLogcat = os.system(adbs)
         return adbLogcat
 
