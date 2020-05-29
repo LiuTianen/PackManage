@@ -4,11 +4,12 @@ from Base.DevicesList import devicesList as dl
 from Base.Common import Common
 from Base.PackName import APP
 from Base.keyCode import KeyCode
+from Base.ADB import Adb
 
 class TvCase:
 
-    def __init__(self):
-        self.packName = APP().get_apk_package()
+    # def __init__(self):
+    #     self.packName = APP().get_apk_package()
 
     def tvConnect(self):
         commands = []
@@ -46,7 +47,7 @@ class TvCase:
             commands.append(cmd)
         Common().loop_threads(commands)
 
-    def tvAppKill(self):
+    def tvAppQuit(self):
         connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
@@ -58,7 +59,7 @@ class TvCase:
         connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
-            adbTop = Common().adbTop(device)
+            adbTop = Adb().adbTop(device)
             commands.append(adbTop)
         return commands
 
@@ -66,7 +67,7 @@ class TvCase:
         connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
-            adbLogcat = Common().adbLogcat(device)
+            adbLogcat = Adb().adbLogcat(device)
             commands.append(adbLogcat)
         return commands
 
@@ -74,7 +75,7 @@ class TvCase:
         connectDevices = dl().get_tvDevices()
         commands = []
         for device in connectDevices:
-            adbClear = Common().adbClear(device, self.packName)
+            adbClear = Adb().adbClear(device, self.packName)
             commands.append(adbClear)
         Common().loop_threads(commands)
 

@@ -3,6 +3,7 @@ import time
 import threading
 import os
 import configparser
+from Base.DevicesList import devicesList as dl
 
 class Common:
     # 配置文件读取的方法
@@ -41,34 +42,6 @@ class Common:
         for i in range(threads_count):
             threads[i].join()
 
-    def adbDisconnect(self):
-        Disc = os.popen('adb disconnect')
-        return Disc
-
-    def adbRestart(self):
-        restart = os.popen('adb kill-server &&adb devices')
-        return restart
-
-    def adbTop(self,adbDevices):
-        adbs = 'start cmd /k "adb -s %s shell top -m 10"' %(adbDevices)
-        Top = os.system(adbs)
-        return Top
-
-
-    def adbClear(self, adbDevices, packageName):
-        adbClear = 'adb -s %s shell pm clear %s' %(adbDevices, packageName)
-        return adbClear
-
-    def adbLogcat(self,adbDevices):
-        logTag = self.cf.get("Common", "logTag")
-        adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, logTag)
-        adbLogcat = os.system(adbs)
-        return adbLogcat
-
-    def cmdKill(self):
-        adbs = 'start cmd /k "tskill adb && tskill cmd"'
-        kill = os.system(adbs)
-        return kill
 
 if __name__ == '__main__':
     adbDevices = []

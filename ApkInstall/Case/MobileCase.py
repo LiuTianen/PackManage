@@ -3,6 +3,7 @@ from Base.PackName import APP
 from Base.Common import Common
 from Base.keyCode import KeyCode
 from Base.DevicesList import devicesList as dl
+from Base.ADB import Adb
 
 
 class MobileCase:
@@ -11,20 +12,18 @@ class MobileCase:
 
 
     def MobileUninstall(self):
-
         connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
-            cmd = "adb -s %s uninstall %s" % (device, self.packName)
+            cmd = Adb().adbUninstall(device,self.packName)
             commands.append(cmd)
         Common().loop_threads(commands)
 
     def MobileInstall(self, apk_path):
         connectDevices = dl().get_mobileDevices()
         commands =[]
-
         for device in connectDevices:
-            cmd = "adb -s %s install -r %s" % (device,apk_path)
+            cmd = Adb().adbInstall( device,apk_path)
             commands.append(cmd)
         Common().loop_threads(commands)
 
@@ -38,7 +37,7 @@ class MobileCase:
             commands.append(cmd)
         Common().loop_threads(commands)
 
-    def mobileApp_Kill(self):
+    def mobileAppQuite(self):
         connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
@@ -50,7 +49,7 @@ class MobileCase:
         connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
-            adbTop = Common().adbTop(device)
+            adbTop = Adb().adbTop(device)
             commands.append(adbTop)
         return commands
 
@@ -58,7 +57,7 @@ class MobileCase:
         connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
-            adbLogcat = Common().adbLogcat(device)
+            adbLogcat = Adb().adbLogcat(device)
             commands.append(adbLogcat)
         return commands
 
@@ -66,7 +65,7 @@ class MobileCase:
         connectDevices = dl().get_mobileDevices()
         commands = []
         for device in connectDevices:
-            adbClear = Common().adbClear(device, self.packName)
+            adbClear = Adb().adbClear(device, self.packName)
             commands.append(adbClear)
         Common().loop_threads(commands)
 
@@ -88,3 +87,4 @@ class MobileCase:
 
 if __name__ == '__main__':
     apk_path = []
+    # packName = []

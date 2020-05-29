@@ -1,8 +1,10 @@
 # coding=utf-8
 from Case.MobileCase import MobileCase
 from Case.TvCase import TvCase
+from Base.ADB import Adb
 from Base.Common import Common
 import time
+from Base.PackName import APP
 
 
 class startInit:
@@ -26,7 +28,7 @@ class startInit:
                         time.sleep(3)
                         break
                     elif i == '4':
-                        MobileCase().mobileApp_Kill()
+                        MobileCase().mobileAppQuite()
                         time.sleep(3)
                         break
                     elif i == '5':
@@ -60,7 +62,7 @@ class startInit:
                         TvCase().tvAppRun()
                         break
                     elif i == '4':
-                        TvCase().tvAppKill()
+                        TvCase().tvAppQuit()
                         break
                     elif i == '5':
                         TvCase().tvAppTop()
@@ -80,13 +82,13 @@ class startInit:
                     else:
                         startInit().Case_Select()
             elif i == '3':
-                Common().adbDisconnect()
+                Adb().adbDisconnect()
                 break
             elif i == '4':
-                Common().adbRestart()
+                Adb().adbRestart()
                 break
             elif i == '5':
-                Common().cmdKill()
+                Adb().cmdKill()
                 break
             elif i == 'e':
                 exit(0)
@@ -97,4 +99,5 @@ class startInit:
 
 if __name__ == '__main__':
     apk_path = Common().apkPath()
+    apk_name = APP().get_apk_package()
     startInit().Case_Select()
