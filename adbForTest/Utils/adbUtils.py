@@ -70,7 +70,6 @@ class AdbTools(object):
         :return:
         """
         cmd = "%s %s %s" % (self.__command, self.__device_id, str(args))
-        # print(cmd)
         return os.popen(cmd)
 
     def shell(self, args):
