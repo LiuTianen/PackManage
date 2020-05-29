@@ -7,7 +7,7 @@
 
 import os
 import subprocess
-from adbForTest.Utils.Common import Common
+from Utils.Common import Common
 
 
 class APP:
