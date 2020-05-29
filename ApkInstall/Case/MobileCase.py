@@ -1,6 +1,7 @@
 # coding=utf-8
 from Base.PackName import APP
 from Base.Common import Common
+from Base.keyCode import KeyCode
 from Base.DevicesList import devicesList as dl
 
 
@@ -67,6 +68,22 @@ class MobileCase:
         for device in connectDevices:
             adbClear = Common().adbClear(device, self.packName)
             commands.append(adbClear)
+        Common().loop_threads(commands)
+
+    def mobileHome(self):
+        connectDevices = dl().get_mobileDevices()
+        commands = []
+        for device in connectDevices:
+            mobileHome = KeyCode().KEYCODE_HOME(device)
+            commands.append(mobileHome)
+        Common().loop_threads(commands)
+
+    def mobileBack(self):
+        connectDevices = dl().get_mobileDevices()
+        commands = []
+        for device in connectDevices:
+            mobileBack = KeyCode().KeyCode_Back(device)
+            commands.append(mobileBack)
         Common().loop_threads(commands)
 
 if __name__ == '__main__':

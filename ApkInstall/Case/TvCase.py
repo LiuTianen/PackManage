@@ -3,6 +3,7 @@
 from Base.DevicesList import devicesList as dl
 from Base.Common import Common
 from Base.PackName import APP
+from Base.keyCode import KeyCode
 
 class TvCase:
 
@@ -47,7 +48,6 @@ class TvCase:
 
     def tvAppKill(self):
         connectDevices = dl().get_tvDevices()
-        # packName = APP().get_apk_package()
         commands = []
         for device in connectDevices:
             cmd = "adb -s %s shell am force-stop %s" % (device, self.packName)
@@ -78,6 +78,21 @@ class TvCase:
             commands.append(adbClear)
         Common().loop_threads(commands)
 
+    def tvHome(self):
+        connectDevices = dl().get_tvDevices()
+        commands = []
+        for device in connectDevices:
+            mobileHome = KeyCode().KEYCODE_HOME(device)
+            commands.append(mobileHome)
+        Common().loop_threads(commands)
+
+    def tvBack(self):
+        connectDevices = dl().get_tvDevices()
+        commands = []
+        for device in connectDevices:
+            mobileBack = KeyCode().KeyCode_Back(device)
+            commands.append(mobileBack)
+        Common().loop_threads(commands)
 
 if __name__ == '__main__':
     apk_path = []

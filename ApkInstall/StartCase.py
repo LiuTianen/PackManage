@@ -38,6 +38,12 @@ class startInit:
                     elif i == '7':
                         MobileCase().MobileAppClear()
                         break
+                    elif i == '8':
+                        MobileCase().mobileHome()
+                        break
+                    elif i == '9':
+                        MobileCase().mobileBack()
+                        break
                     else:
                         startInit().Case_Select()
             elif i == '2':
@@ -61,6 +67,15 @@ class startInit:
                         break
                     elif i == '6':
                         TvCase().tvAppLogcat()
+                        break
+                    elif i == '7':
+                        TvCase().tvAppClear()
+                        break
+                    elif i == '8':
+                        TvCase().tvHome()
+                        break
+                    elif i == '9':
+                        TvCase().tvBack()
                         break
                     else:
                         startInit().Case_Select()
