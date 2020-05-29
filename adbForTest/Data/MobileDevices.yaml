@@ -1,0 +1,28 @@
+mobileName:
+    moblie_1:
+        name: RedMi Note 4X
+        DeviceID: 6c2e9aa90104
+    moblie_2:
+      name: GIONee GN5005
+      DeviceID: LZAQHEHQEAUOIBFQ
+    moblie_3:
+      name: ZTE BV0701T_9656
+      DeviceID: ZTEBV0710T
+    moblie_4:
+      name: MeiZu MX5
+      DeviceID: 5GABMKA3DUP
+    moblie_5:
+      name: GIONee GN3003
+      DeviceID: OJHA7P9PZLRWUWBA
+    moblie_6:
+      name: CoolPab A8-831
+      DeviceID: ebd0d02c
+    moblie_7:
+      name: Redmi Note 3
+      DeviceID: 5e47b811
+    moblie_8:
+      name: Xiaomi MI3
+      DeviceID: a49cd39c
+    moblie_9:
+      name: Lenovo K30-T
+      DeviceID: 5ea3dada

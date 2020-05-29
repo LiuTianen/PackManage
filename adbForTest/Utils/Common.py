@@ -9,7 +9,7 @@ import configparser
 class Common:
     # 配置文件读取的方法
     cf = configparser.ConfigParser()
-    cf.read('Config.ini', encoding="utf-8")
+    cf.read('../Data/Config.ini', encoding="utf-8")
 
     # apk路径读取的方法
     def apkPath(self):
