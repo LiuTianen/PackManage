@@ -8,7 +8,7 @@ from Utils.Common import Common
 class UninstallCase:
 
 
-    def mobileUninstall(self):
+    def AppUninstall(self):
         commands = []
         for devices in AdbTools().getOnlineDevices():
             cmd = AdbTools(devices).uninstall(packName)
@@ -17,4 +17,4 @@ class UninstallCase:
 
 if __name__ == '__main__':
     packName = APP().get_apk_package()
-    UninstallCase().mobileUninstall()
+    UninstallCase().AppUninstall()

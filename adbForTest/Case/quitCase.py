@@ -8,7 +8,7 @@ from Utils.Common import Common
 class InstallCase:
 
 
-    def mobileQuit(self):
+    def AppQuit(self):
         commands = []
         for devices in AdbTools().getOnlineDevices():
             cmd = AdbTools(devices).quit_app(packName)
@@ -17,4 +17,4 @@ class InstallCase:
 
 if __name__ == '__main__':
     packName = APP().get_apk_package()
-    InstallCase().mobileQuit()
+    InstallCase().AppQuit()
