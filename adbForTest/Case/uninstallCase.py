@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+#coding=utf-8
+
 from Utils.adbUtils import AdbTools
 from Utils.PackUtils import APP
 from Utils.Common import Common
