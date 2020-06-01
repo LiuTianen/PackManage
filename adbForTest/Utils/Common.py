@@ -10,7 +10,7 @@ class Common:
     # 配置文件读取的方法
     cf = configparser.ConfigParser()
     cf.read('../Data/Config.ini', encoding="utf-8")
-
+    # cf.read('Data/Config.ini', encoding="utf-8")
     # apk路径读取的方法
     def apkPath(self):
         apkPath = self.cf.get("Common", "apkPath")
@@ -24,6 +24,12 @@ class Common:
     def aaPath(self):
         aaPath = Common().aapt() + ' ' + Common().apkPath()
         return aaPath
+
+    def logTag(self):
+        logtag = self.cf.get("Common", "logTag")
+
+        return logtag
+
 
     def excute(self, cmd):
         subprocess.Popen(cmd, shell=True)
