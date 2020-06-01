@@ -2,7 +2,6 @@
 #coding=utf-8
 
 from Utils.adbUtils import AdbTools
-from Utils.PackUtils import APP
 from Utils.Common import Common
 
 class UninstallCase:
@@ -16,5 +15,6 @@ class UninstallCase:
         return commands
 
 if __name__ == '__main__':
-    packName = APP().get_apk_package()
+    path = Common().apkPath()
+    packName = AdbTools().dump_apk_name(path)
     UninstallCase().AppUninstall()

@@ -206,8 +206,8 @@ class AdbTools(object):
                 d = {}
         return all_data
 
-    @staticmethod
-    def dump_apk_launch(path):
+    # @staticmethod
+    def dump_apk_launch(self, path):
         """
         dump apk文件
         :param path: apk路径
@@ -222,7 +222,7 @@ class AdbTools(object):
                 build_tools = True
         if not build_tools:
             raise EnvironmentError("ANDROID_HOME BUILD-TOOLS COMMAND NOT FOUND.\nPlease set the environment variable.")
-        cmd = ('aapt dump badging %s' % (path,)) + " | findstr launchable "
+        cmd = ('aapt dump badging %s' % (path,)) + (' | %s launchable ' %(self.__find))
         result = ""
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
