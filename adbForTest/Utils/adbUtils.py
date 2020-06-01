@@ -79,7 +79,6 @@ class AdbTools(object):
         :return:
         """
         cmd = "%s %s shell %s" % (self.__command, self.__device_id, str(args))
-        # print(cmd)
         return os.popen(cmd)
 
     def getOnlineDevices(self):
@@ -206,7 +205,6 @@ class AdbTools(object):
                 d = {}
         return all_data
 
-    # @staticmethod
     def dump_apk_launch(self, path):
         """
         dump apk文件
@@ -394,7 +392,7 @@ class AdbTools(object):
         导出缓存日志
         :return:
         """
-        return self.adb('logcat %s' %(logTag))
+        return self.adb('logcat %s' %(logTag)).read().strip()
 
     def get_crash_logcat(self):
         """
