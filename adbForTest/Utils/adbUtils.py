@@ -389,6 +389,13 @@ class AdbTools(object):
         """
         return self.adb('logcat -v time -d')
 
+    def get_logcat_tag(self,logTag):
+        """
+        导出缓存日志
+        :return:
+        """
+        return self.adb('logcat %s' %(logTag))
+
     def get_crash_logcat(self):
         """
         导出崩溃日志
@@ -402,6 +409,14 @@ class AdbTools(object):
         :return:
         """
         self.adb('logcat -c')
+
+    def get_top(self):
+        """
+        获取运行中的APP进程信息
+        :return:
+        """
+        return self.shell('top -m 10').read().strip()
+
 
     def get_device_time(self):
         """
