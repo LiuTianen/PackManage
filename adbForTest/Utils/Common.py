@@ -59,6 +59,11 @@ class Common:
         adbLogcat = os.system(adbs)
         return adbLogcat
 
+    def cmdKill(self):
+        adbs = 'start cmd /k "tskill adb && tskill cmd"'
+        kill = os.system(adbs)
+        return kill
+
 if __name__ == '__main__':
     adbDevices = []
 
