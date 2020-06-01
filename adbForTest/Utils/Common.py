@@ -5,6 +5,7 @@ import subprocess
 import time
 import threading
 import configparser
+import os
 
 class Common:
     # 配置文件读取的方法
@@ -27,9 +28,7 @@ class Common:
 
     def logTag(self):
         logtag = self.cf.get("Common", "logTag")
-
         return logtag
-
 
     def excute(self, cmd):
         subprocess.Popen(cmd, shell=True)
@@ -49,6 +48,16 @@ class Common:
         for i in range(threads_count):
             threads[i].join()
 
+    def adbTop(self, adbDevices):
+        adbs = 'start cmd /k "adb -s %s shell top -m 10"' % (adbDevices)
+        Top = os.system(adbs)
+        return Top
+
+    def adbLogcat(self, adbDevices):
+        logTag = self.cf.get("Common", "logTag")
+        adbs = 'start cmd /k "adb -s %s logcat %s"' % (adbDevices, logTag)
+        adbLogcat = os.system(adbs)
+        return adbLogcat
 
 if __name__ == '__main__':
     adbDevices = []
