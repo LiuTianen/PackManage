@@ -234,6 +234,34 @@ class AdbTools(object):
         return result
 
     @staticmethod
+    def dump_apk_name(path):
+        """
+        dump apk文件
+        :param path: apk路径
+        :return:
+        """
+        # 检查build-tools是否添加到环境变量中
+        # 需要用到里面的aapt命令
+        l = os.environ['PATH'].split(';')
+        build_tools = False
+        for i in l:
+            if 'build-tools' in i:
+                build_tools = True
+        if not build_tools:
+            raise EnvironmentError("ANDROID_HOME BUILD-TOOLS COMMAND NOT FOUND.\nPlease set the environment variable.")
+        cmd = ('aapt dump badging %s' % (path,)) + " | findstr package:"
+        result = ""
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE,
+                             stdin=subprocess.PIPE, shell=True)
+        (output, err) = p.communicate()
+        output = str(output, encoding='utf8')
+        if output != "":
+            result = output.split("'")[1]
+        return result
+
+
+    @staticmethod
     def dump_xml(path, filename):
         """
         dump apk xml文件
